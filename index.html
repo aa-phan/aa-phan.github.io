@@ -178,6 +178,13 @@ a{ color: inherit; }
   padding: calc(var(--u)*2) calc(var(--u)*2.2) calc(var(--u)*3);
   color: var(--ink);
 }
+.about-photo{
+  display:block;
+  width:100%;
+  max-width: calc(var(--u)*30);
+  margin: calc(var(--u)*2) auto 0;
+  border: calc(var(--u)*0.3) solid var(--shell-dark);
+}
 .body p{
   font-size: calc(var(--u)*2.4);
   line-height:1.35;
@@ -436,7 +443,7 @@ const ABOUT = {
     "Hello there! My name is Aaron Phan, and I'm a software engineer by day, and aspiring artist by night.",
     "In my spare time, I enjoy listening to EDM, cooking, and DJing under the pseudonym PHVNTM."
   ],
-  quote: "The best time to start was yesterday, the next best time to start is today."
+  quote: "\"The best time to start was yesterday, the next best time to start is today.\""
 };
 
 const SKILLS = [
@@ -454,35 +461,35 @@ const EDUCATION = [
 ];
 
 const PROJECTS = [
-  { title:'RecipeCart', sub:'July 2026', stack:['TypeScript','Railway','Docker','CSS'],
+  { title:'RecipeCart', sub:'Personal Project: July 2026', stack:['TypeScript','Railway','Docker','CSS'],
     body:['Built a TypeScript pipeline converting TikTok recipes into Kroger cart items using OCR and Claude.',
       'Developed a deterministic matching engine ranking grocery products by availability, package fit, and unit price.',
       'Implemented an OAuth2-secured cart workflow with explicit user approval, encrypted tokens, and automated secret redaction.'] },
-  { title:'A.T.L.A.S', sub:'May 2025 – August 2025', stack:['Python','Flask','HTML/CSS','JavaScript'],
+  { title:'A.T.L.A.S', sub:'Spectrum: May 2025 – August 2025', stack:['Python','Flask','HTML/CSS','JavaScript'],
     body:['Built a Python/Flask web app standardizing post-installation logging, improving team efficiency by 30%.',
       'Conducted user testing with off-net installation teams to iteratively refine features based on direct feedback.',
       'Documented technical architecture, reducing developer onboarding time by 12%.'] },
-  { title:'Suspect Genie', sub:'January 2025 – May 2025', stack:['Python','PyQT','TensorFlow','Keras','Scikit-learn'],
+  { title:'Suspect Genie', sub:'Symbotic: January 2025 – May 2025', stack:['Python','PyQT','TensorFlow','Keras','Scikit-learn'],
     body:['Designed a neural network ML tool to predict unusable shipping freight by analyzing case dimensions and weight, automating defect detection by 25%.',
       'Trained ML models using TensorFlow and Keras to classify freight viability, achieving ≥ 50% accuracy on test data.',
       'Engineered a data pipeline with NumPy, Pandas, and Scikit-learn for data pre-processing/cleaning and feature engineering, improving model performance by 24%.',
       'Deployed a user-friendly GUI with PyQT for non-technical teams to analyze CSV files for predictive analysis of future problematic SKUs, reducing investigative labor hours by 36%.'] },
-  { title:'MediaDash: Content Recommendation Hub', sub:'Brainrot Hackathon — November 2024', stack:['Python','Langchain','Supabase'],
+  { title:'MediaDash: Content Recommendation Hub', sub:'Brainrot Hackathon: November 2024', stack:['Python','Langchain','Supabase'],
     link:{ label:'GitHub', href:'https://github.com/aa-phan' },
     body:['Developed a Python backend for preprocessing user search queries sent to the IMDb and TMDb APIs.',
       'Utilized the Langchain API to make AI-customized content recommendations from previous user watch history.',
       'Applied database management concepts to ensure low-latency exchange between frontend and backend applications.',
       'Integrated Supabase into the data storage schema for previous user watch history.'] } ,
-  { title:'Full-Stack Library Simulator', sub:'UT Coursework — Spring 2024', stack:['JavaFX','MongoDB'],
+  { title:'Full-Stack Library Simulator', sub:'ECE 422C: Spring 2024', stack:['JavaFX','MongoDB'],
     body:['Developed a full stack library application using JavaFX, enhancing user experience with an intuitive graphical interface.',
       'Implemented client-server socket communication to ensure real-time data exchange and seamless user interactions.',
       'Integrated MongoDB for efficient data storage and retrieval, ensuring robust and scalable database management.',
       'Utilized Scene Builder to design and arrange user interface components, streamlining development and improving usability.'] },
-  { title:'FPGA-Based Stopwatch', sub:'UT Coursework — Fall 2023', stack:['Verilog','FPGA'],
+  { title:'FPGA-Based Stopwatch', sub:'ECE 313: Fall 2023', stack:['Verilog','FPGA'],
     body:['Designed and implemented an FPGA-based stopwatch utilizing Verilog digital design techniques.',
       'Developed and tested the stopwatch functionality on an FPGA board, ensuring accurate timekeeping and reliable performance.',
       "Applied state machine concepts to manage the stopwatch's operational states, enhancing the overall system efficiency."] },
-  { title:'Smart Mirror', sub:'Personal Project — Summer 2022', stack:['Raspberry Pi','Linux'],
+  { title:'Smart Mirror', sub:'Personal Project: Summer 2022', stack:['Raspberry Pi','Linux'],
     body:['Fabricated a mirror frame using plywood and power tools to house a two-way mirror, a Raspberry Pi, and a computer monitor.',
       'Used Ubuntu Linux to create a custom GUI displaying information such as real-time weather content and traffic data to function as a smart display.'] },
 ];
@@ -616,6 +623,11 @@ function makeAboutFrame(){
     const bq = document.createElement('blockquote');
     bq.textContent = ABOUT.quote;
     container.appendChild(bq);
+    const img = document.createElement('img');
+    img.className = 'about-photo';
+    img.src = 'images/about-dj.jpg';
+    img.alt = 'Aaron Phan DJing at his UT Austin graduation';
+    container.appendChild(img);
   }};
 }
 
