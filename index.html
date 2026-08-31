@@ -1,1041 +1,848 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Aaron Phan</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Phan — Phantom iPod</title>
+<meta name="description" content="Aaron Phan's portfolio, presented as an 8-bit reinterpretation of a classic white click-wheel iPod.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --shell: #f4f4f0;
+  --shell-shadow: #d6d6cf;
+  --shell-dark: #9a9a92;
+  --chrome: #c9cdd2;
+  --chrome-dark: #7c828a;
+  --wheel: #f7f7f4;
 
-	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content="" />
-	<meta property="og:image" content="" />
-	<meta property="og:url" content="" />
-	<meta property="og:site_name" content="" />
-	<meta property="og:description" content="" />
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  --screen-bg: #eef1f4;
+  --ink: #16181c;
+  --ink-dim: #6b6f76;
+  --select-a: #3d78c9;
+  --select-b: #1d4d94;
+  --select-ink: #ffffff;
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+  --u: clamp(3px, 0.9vw, 7px);
 
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+  --chamfer-lg: polygon(
+    0 calc(var(--u)*3), 0 calc(var(--u)*2), calc(var(--u)*1) calc(var(--u)*2), calc(var(--u)*1) calc(var(--u)*1), calc(var(--u)*2) calc(var(--u)*1), calc(var(--u)*2) 0, calc(var(--u)*3) 0,
+    calc(100% - var(--u)*3) 0, calc(100% - var(--u)*2) 0, calc(100% - var(--u)*2) calc(var(--u)*1), calc(100% - var(--u)*1) calc(var(--u)*1), calc(100% - var(--u)*1) calc(var(--u)*2), 100% calc(var(--u)*2), 100% calc(var(--u)*3),
+    100% calc(100% - var(--u)*3), 100% calc(100% - var(--u)*2), calc(100% - var(--u)*1) calc(100% - var(--u)*2), calc(100% - var(--u)*1) calc(100% - var(--u)*1), calc(100% - var(--u)*2) calc(100% - var(--u)*1), calc(100% - var(--u)*2) 100%, calc(100% - var(--u)*3) 100%,
+    calc(var(--u)*3) 100%, calc(var(--u)*2) 100%, calc(var(--u)*2) calc(100% - var(--u)*1), calc(var(--u)*1) calc(100% - var(--u)*1), calc(var(--u)*1) calc(100% - var(--u)*2), 0 calc(100% - var(--u)*2), 0 calc(100% - var(--u)*3)
+  );
+  --chamfer-sm: polygon(
+    0 calc(var(--u)*1.5), 0 calc(var(--u)*1), calc(var(--u)*0.5) calc(var(--u)*1), calc(var(--u)*0.5) calc(var(--u)*0.5), calc(var(--u)*1) calc(var(--u)*0.5), calc(var(--u)*1) 0, calc(var(--u)*1.5) 0,
+    calc(100% - var(--u)*1.5) 0, calc(100% - var(--u)*1) 0, calc(100% - var(--u)*1) calc(var(--u)*0.5), calc(100% - var(--u)*0.5) calc(var(--u)*0.5), calc(100% - var(--u)*0.5) calc(var(--u)*1), 100% calc(var(--u)*1), 100% calc(var(--u)*1.5),
+    100% calc(100% - var(--u)*1.5), 100% calc(100% - var(--u)*1), calc(100% - var(--u)*0.5) calc(100% - var(--u)*1), calc(100% - var(--u)*0.5) calc(100% - var(--u)*0.5), calc(100% - var(--u)*1) calc(100% - var(--u)*0.5), calc(100% - var(--u)*1) 100%, calc(100% - var(--u)*1.5) 100%,
+    calc(var(--u)*1.5) 100%, calc(var(--u)*1) 100%, calc(var(--u)*1) calc(100% - var(--u)*0.5), calc(var(--u)*0.5) calc(100% - var(--u)*0.5), calc(var(--u)*0.5) calc(100% - var(--u)*1), 0 calc(100% - var(--u)*1), 0 calc(100% - var(--u)*1.5)
+  );
+}
 
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
-	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+*{ box-sizing:border-box; }
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+html,body{
+  margin:0; padding:0; min-height:100%;
+  background:#111214;
+}
 
+body{
+  display:flex; align-items:center; justify-content:center;
+  min-height:100vh;
+  padding: calc(var(--u)*4) calc(var(--u)*2);
+  font-family:'VT323', 'Courier New', monospace;
+}
+
+a{ color: inherit; }
+
+/* ===== device shell ===== */
+.device{
+  position:relative;
+  width: calc(var(--u)*62);
+  max-width: 94vw;
+  background: var(--chrome);
+  padding: calc(var(--u)*1.2);
+  clip-path: var(--chamfer-lg);
+  box-shadow:
+    calc(var(--u)*0.5) calc(var(--u)*0.5) 0 var(--chrome-dark),
+    calc(var(--u)*1.2) calc(var(--u)*1.2) 0 rgba(0,0,0,.45);
+}
+
+.face{
+  background: var(--shell);
+  clip-path: var(--chamfer-lg);
+  padding: calc(var(--u)*3) calc(var(--u)*3) calc(var(--u)*3.5);
+  box-shadow:
+    inset 0 calc(var(--u)*0.6) 0 var(--shell-shadow),
+    inset 0 calc(var(--u)*-0.6) 0 var(--shell-shadow);
+}
+
+/* ===== screen assembly ===== */
+.screen-bezel{
+  background: var(--shell-dark);
+  padding: calc(var(--u)*1.2);
+  clip-path: var(--chamfer-sm);
+  box-shadow: inset 0 0 0 calc(var(--u)*0.3) var(--shell-shadow);
+}
+
+.screen{
+  position:relative;
+  background: var(--screen-bg);
+  overflow:hidden;
+  box-shadow: inset calc(var(--u)*0.4) calc(var(--u)*0.4) 0 rgba(0,0,0,.15);
+}
+
+.screen-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: calc(var(--u)*1) calc(var(--u)*1.6);
+  background: var(--shell-shadow);
+  border-bottom: calc(var(--u)*0.3) solid var(--shell-dark);
+}
+.screen-header-left{
+  display:flex; align-items:center;
+  gap: calc(var(--u)*0.8);
+}
+.screen-title{
+  font-family:'VT323', 'Courier New', monospace;
+  font-size: calc(var(--u)*2.2);
+  color: var(--ink);
+  letter-spacing:0.5px;
+}
+.btn-back{
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none;
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*2.4);
+  line-height:1;
+  color: var(--select-b);
+  cursor:pointer;
+  padding: 0 calc(var(--u)*0.3);
+}
+.btn-back:hover:not(:disabled){ color: var(--ink); }
+.btn-back:disabled{ opacity:0.3; cursor:default; }
+.btn-back:focus-visible{ outline: 2px solid var(--select-b); outline-offset:2px; }
+.batt{
+  display:flex; align-items:center; gap:2px;
+}
+.batt span{
+  display:block;
+  width: calc(var(--u)*0.6);
+  height: calc(var(--u)*1);
+  background: var(--ink);
+}
+.batt::after{
+  content:'';
+  width: calc(var(--u)*0.4);
+  height: calc(var(--u)*0.6);
+  background: var(--ink);
+  margin-left:1px;
+}
+
+.pane{
+  position:relative;
+  height: calc(var(--u)*40);
+  overflow-y:auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pane::-webkit-scrollbar{ display:none; width:0; height:0; }
+
+/* ===== list rows ===== */
+.ilist{ list-style:none; margin:0; padding:0; }
+.irow{
+  display:flex; align-items:center; gap: calc(var(--u)*1);
+  width:100%; text-align:left;
+  background: transparent; border:none;
+  border-bottom: 1px solid var(--shell-shadow);
+  color: var(--ink);
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*2.3);
+  padding: calc(var(--u)*1.3) calc(var(--u)*1.6);
+  cursor:pointer;
+}
+.irow-main{ flex:1 1 auto; min-width:0; }
+.irow-label{ display:block; }
+.irow-sub{ display:block; font-size:0.78em; color: var(--ink-dim); }
+.irow-chevron{ flex:none; font-family:'VT323', monospace; font-size: calc(var(--u)*1.6); color: var(--ink-dim); }
+.irow[aria-selected="true"]{
+  background: linear-gradient(180deg, var(--select-a) 0% 50%, var(--select-b) 50% 100%);
+  color: var(--select-ink);
+}
+.irow[aria-selected="true"] .irow-sub{ color: var(--select-ink); opacity:0.85; }
+.irow[aria-selected="true"] .irow-chevron{ color: var(--select-ink); }
+.irow:focus-visible{ outline: 2px solid var(--select-b); outline-offset:-2px; }
+
+/* ===== body/detail content ===== */
+.body{
+  padding: calc(var(--u)*2) calc(var(--u)*2.2) calc(var(--u)*3);
+  color: var(--ink);
+}
+.body p{
+  font-size: calc(var(--u)*2.4);
+  line-height:1.35;
+  margin: 0 0 calc(var(--u)*1.6);
+}
+.body blockquote{
+  margin: calc(var(--u)*1.6) 0;
+  padding: calc(var(--u)*1) calc(var(--u)*1.6);
+  border-left: calc(var(--u)*0.6) solid var(--select-b);
+  font-size: calc(var(--u)*2.2);
+  font-style:normal;
+  color: var(--ink);
+  background: var(--shell-shadow);
+}
+.body .detail-sub{
+  font-size: calc(var(--u)*2);
+  color: var(--ink-dim);
+  margin: 0 0 calc(var(--u)*1.6);
+}
+.kv{ margin: 0 0 calc(var(--u)*1.6); }
+.kv-row{ display:flex; gap: calc(var(--u)*1); font-size: calc(var(--u)*2.2); margin-bottom: calc(var(--u)*0.4); }
+.kv-key{ color: var(--ink-dim); width: calc(var(--u)*11); flex:none; }
+.body ul{ margin: 0 0 calc(var(--u)*1.6); padding-left: calc(var(--u)*2.2); }
+.body li{ font-size: calc(var(--u)*2.2); line-height:1.4; margin-bottom: calc(var(--u)*0.6); }
+
+.skillsline{
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*2);
+  color: var(--ink-dim);
+  letter-spacing:0.5px;
+  line-height:1.5;
+  margin-top: calc(var(--u)*1.6);
+  padding-top: calc(var(--u)*1.6);
+  border-top: 1px solid var(--shell-shadow);
+}
+.skillsline b{
+  display:block;
+  color: var(--ink);
+  margin-bottom: calc(var(--u)*0.6);
+  font-size: calc(var(--u)*2.1);
+}
+.skillsline-first{
+  margin-top:0;
+  padding-top:0;
+  border-top:none;
+}
+
+.stackline{
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*1.9);
+  color: var(--ink-dim);
+  letter-spacing:0.4px;
+  margin: calc(var(--u)*1.6) 0 0;
+}
+
+.detail-link{
+  display:inline-flex; align-items:center; gap: calc(var(--u)*0.6);
+  background: var(--select-b); border:none;
+  color: var(--select-ink);
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*2.1);
+  padding: calc(var(--u)*0.7) calc(var(--u)*1.6);
+  cursor:pointer;
+  margin-top: calc(var(--u)*1.8);
+  text-decoration:none;
+}
+.detail-link:hover, .detail-link:focus-visible{ background: var(--select-a); }
+.detail-link:focus-visible{ outline: 2px solid var(--ink); outline-offset:2px; }
+
+/* ===== wordmark ===== */
+.wordmark{
+  text-align:center;
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*1.7);
+  color: var(--shell-dark);
+  letter-spacing: 2px;
+  font-style:italic;
+  margin: calc(var(--u)*2) 0 calc(var(--u)*1);
+}
+
+/* ===== wheel assembly ===== */
+.wheel-assembly{
+  position:relative;
+  width: calc(var(--u)*46);
+  height: calc(var(--u)*46);
+  margin: 0 auto;
+}
+
+.wheel-outer{
+  position:absolute; inset:0;
+  border-radius:50%;
+  background:
+    repeating-radial-gradient(circle at center,
+      var(--shell-dark) 0px, var(--shell-dark) 2px,
+      var(--shell-shadow) 2px, var(--shell-shadow) 4px,
+      var(--wheel) 4px, var(--wheel) 7px
+    );
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:
+    calc(var(--u)*0.3) calc(var(--u)*0.3) 0 var(--shell-dark),
+    calc(var(--u)*0.7) calc(var(--u)*0.7) 0 rgba(0,0,0,.2),
+    inset 0 0 0 calc(var(--u)*0.4) var(--chrome-dark);
+  touch-action:none;
+  cursor:grab;
+}
+.wheel-outer:active{ cursor:grabbing; }
+
+.wheel{
+  --wheel-rot: 0deg;
+  width: 86%;
+  height: 86%;
+  border-radius:50%;
+  transform: rotate(var(--wheel-rot));
+  background: conic-gradient(from 15deg,
+    #f7f7f4 0deg 30deg, #b9bcc0 30deg 30.5deg,
+    #eceeec 30.5deg 60deg, #b9bcc0 60deg 60.5deg,
+    #ffffff 60.5deg 90deg, #b9bcc0 90deg 90.5deg,
+    #f2f2ef 90.5deg 120deg, #b9bcc0 120deg 120.5deg,
+    #e6e8e6 120.5deg 150deg, #b9bcc0 150deg 150.5deg,
+    #ffffff 150.5deg 180deg, #b9bcc0 180deg 180.5deg,
+    #f7f7f4 180.5deg 210deg, #b9bcc0 210deg 210.5deg,
+    #eceeec 210.5deg 240deg, #b9bcc0 240deg 240.5deg,
+    #ffffff 240.5deg 270deg, #b9bcc0 270deg 270.5deg,
+    #f2f2ef 270.5deg 300deg, #b9bcc0 300deg 300.5deg,
+    #e6e8e6 300.5deg 330deg, #b9bcc0 330deg 330.5deg,
+    #ffffff 330.5deg 359.5deg, #b9bcc0 359.5deg 360deg
+  );
+  position:relative;
+}
+
+/* ===== decorative wheel-edge labels ===== */
+.wheel-label{
+  position:absolute;
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*2.1);
+  color: var(--shell-dark);
+  pointer-events:none;
+}
+.label-next{ right: calc(var(--u)*3.2); top:50%; transform:translateY(-50%); }
+.label-prev{ left: calc(var(--u)*3.2); top:50%; transform:translateY(-50%); }
+.label-play{ bottom: calc(var(--u)*2.4); left:50%; transform:translateX(-50%); }
+
+/* ===== MENU + SELECT real buttons ===== */
+.btn-menu{
+  position:absolute;
+  top: calc(var(--u)*2.2);
+  left:50%;
+  transform:translateX(-50%);
+  background:transparent; border:none;
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*1.9);
+  letter-spacing:1px;
+  color: var(--shell-dark);
+  padding: calc(var(--u)*0.6) calc(var(--u)*1);
+  cursor:pointer;
+  z-index:3;
+}
+.btn-menu:hover{ color: var(--ink); }
+.btn-menu:focus-visible{ outline: 2px solid var(--select-b); outline-offset:2px; }
+
+.btn-select{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width: calc(var(--u)*14);
+  height: calc(var(--u)*14);
+  border-radius:50%;
+  background: var(--shell-shadow);
+  border:none;
+  box-shadow:
+    inset 0 0 0 calc(var(--u)*0.35) var(--shell-dark),
+    inset calc(var(--u)*0.3) calc(var(--u)*0.3) 0 rgba(0,0,0,.12);
+  font-family:'VT323', monospace;
+  font-size: calc(var(--u)*1.6);
+  letter-spacing:1px;
+  color: var(--shell-dark);
+  cursor:pointer;
+  z-index:3;
+}
+.btn-select:hover{ color: var(--ink); }
+.btn-select:focus-visible{ outline: 2px solid var(--select-b); outline-offset:3px; }
+
+@media (max-width: 380px){
+  :root{ --u: clamp(2.4px, 2.2vw, 6px); }
+}
+</style>
 </head>
-
 <body>
-	<div id="colorlib-page">
-		<div class="container-wrap">
-			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar"
-				aria-expanded="false" aria-controls="navbar"><i></i></a>
-			<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-				<div class="text-center">
-					<div class="author-img" style="background-image: url(images/about.jpg);"></div>
-					<h1 id="colorlib-logo"><a href="index.html">Aaron Phan</a></h1>
-					<span class="position">Software Engineer @ UT Austin</span>
-				</div>
-				<nav id="colorlib-main-menu" role="navigation" class="navbar">
-					<div id="navbar" class="collapse">
-						<ul>
-							<li class="active"><a href="#" data-nav-section="home">Home</a></li>
-							<li><a href="#" data-nav-section="about">About Me</a></li>
-							<li><a href="#" data-nav-section="skills">Skills</a></li>
-							<!--<li><a href="#" data-nav-section="skills">Skills</a></li>-->
-							<li><a href="#" data-nav-section="education">Education</a></li>
-							<li><a href="#" data-nav-section="experience">Experience</a></li>
-							<!-- <li><a href="#" data-nav-section="work">Work</a></li>-->
-							<!--<li><a href="#" data-nav-section="blog">Blog</a></li>-->
-							<li><a href="#" data-nav-section="contact">Contact Me</a></li>
-							
-						</ul>
-					</div>
-				</nav>
 
-				<div class="colorlib-footer">
-					<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright
-							<script>document.write(new Date().getFullYear());</script> All rights reserved. Made with <i
-								class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-								target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span>
-							<!--<span>Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></span> <span>Demo
-								Images: <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></span>-->
-						</small></p>
-					<ul>
-						<li><a href="#"><i class="icon-facebook2"></i></a></li>
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-instagram"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-					</ul>
-				</div>
+<div class="device">
+  <div class="face">
+    <div class="screen-bezel">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <button type="button" class="btn-back" id="backBtn" aria-label="Back">&#8249;</button>
+            <span class="screen-title" id="screenTitle">iPod</span>
+          </div>
+          <span class="batt" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+        <div class="pane" id="pane" tabindex="-1"></div>
+      </div>
+    </div>
 
-			</aside>
+    <div class="wordmark">AARON PHAN</div>
 
-			<div id="colorlib-main">
-				<section id="colorlib-hero" class="js-fullheight" data-section="home">
-					<div class="flexslider js-fullheight">
-						<ul class="slides">
-							<li style="background-image: url(images/img_bg_1.jpg);">
-								<div class="overlay"></div>
-								<div class="container-fluid">
-									<div class="row">
-										<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-											<div class="slider-text-inner js-fullheight">
-												<div class="desc">
-													<!--<h1>Hello, World!</h1>
-													<h2>bash My_Portfolio.sh</h2>-->
-													
-													<h1 style="color:white;">Hello, World!</h1>
-														<h2 style="color:white;"> >> <span class="auto-type"></span></h2>
+    <div class="wheel-assembly">
+      <div class="wheel-outer" id="wheelOuter" aria-hidden="true" tabindex="-1">
+        <div class="wheel" id="wheel"></div>
+        <span class="wheel-label label-next" aria-hidden="true">&#9197;</span>
+        <span class="wheel-label label-prev" aria-hidden="true">&#9198;</span>
+        <span class="wheel-label label-play" aria-hidden="true">&#9199;</span>
+      </div>
+      <button type="button" class="btn-menu" id="menuBtn" aria-label="Menu: go back">MENU</button>
+      <button type="button" class="btn-select" id="selectBtn" aria-label="Select">SELECT</button>
+    </div>
+  </div>
+</div>
 
-														<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+(function(){
+'use strict';
 
-														<script>
-														var typed  = new Typed(".auto-type", {
-														strings:["bash My_Portfolio.sh"],
-														typeSpeed: 100,
-														backSpeed: 50,
-														loop: true
-														})
-													</script>
-													<!--<p><a class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>-->
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<!--
-							<li style="background-image: url(images/img_bg_2.jpg);">
-								<div class="overlay"></div>
-								<div class="container-fluid">
-									<div class="row">
-										<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-											<div class="slider-text-inner">
-												<div class="desc">
-													<h1>I am <br>a Designer</h1>
-													<h2>100% html5 bootstrap templates Made by <a href="https://colorlib.com/"
-															target="_blank">colorlib.com</a></h2>
-													<p><a class="btn btn-primary btn-learn">View Portfolio <i class="icon-briefcase3"></i></a></p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>-->
-						</ul>
-					</div>
-				</section>
-			
-				<section class="colorlib-about" data-section="about">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-									<div class="col-md-12">
-										<div class="about-desc">
-											<span class="heading-meta">About Me</span>
-											<h2 class="colorlib-heading">Who Am I?</h2>
-											<p><strong>Hello there! </strong>My name is Aaron Phan, and I'm an <b>energetic, ambitious, and
-													dependable</b> student
-												looking to broaden my engineering horizons through my studies at
-												The University of Texas at Austin. <br><br>
-												In my spare time, I enjoy weightlifting, playing pickleball, raving, being an amateur DJ (my stage name is Phantom!), 
-												and working on challenging projects (currently I am exploring the practical applications of machine learning and artificial intelligence). <br><br>
-												I firmly believe that no matter your personal background, with enough hard work and dedication,
-												anyone can achieve their dreams if you strive to put in the work to make progress, one day at a
-												time.</p>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
-										<div class="services color-1">
-											<span class="icon2"><i class="icon-cloud3"></i></span>
-											<h3>Machine Learning</h3>
-										</div>
-									</div>
-									<div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
-										<div class="services color-2">
-											<span class="icon2"><i class="icon-device-laptop"></i></span>
-											<h3>Software Development</h3>
-										</div>
-									</div>
-									<div class="col-md-3 animate-box" data-animate-effect="fadeInTop">
-										<div class="services color-3">
-											<span class="icon2"><i class="icon-battery-mid"></i></span>
-											<h3>Data Science</h3>
-										</div>
-									</div>
-									<div class="col-md-3 animate-box" data-animate-effect="fadeInBottom">
-										<div class="services color-4">
-											<span class="icon2"><i class="icon-phone3"></i></span>
-											<h3>Information Technology</h3>
-										</div>
-									</div>
-								</div>
+// ===== SFX: synthesized classic-iPod scroll-tick / button-click sounds =====
+// Lazily constructs the AudioContext on first real user gesture (pointerdown/
+// click/keydown), satisfying autoplay policy. No audio files are loaded.
+const Sfx = {
+  ctx: null,
+  ensure(){
+    if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+    return this.ctx;
+  },
+  blip(freq, durMs, type, gain){
+    let ctx;
+    try { ctx = this.ensure(); } catch(err) { return; }
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    const now = ctx.currentTime;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(gain, now + 0.003);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + durMs / 1000);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + durMs / 1000 + 0.02);
+  },
+  tick(){ this.blip(1500, 10, 'square', 0.045); },   // wheel scroll detent
+  click(){ this.blip(650, 32, 'square', 0.07); }     // MENU / SELECT / Back / row press
+};
 
-							</div>
-						</div>
-					</div>
-				</section>
+// ===== DATA  =====
+const ABOUT = {
+  bio: [
+    "Hello there! My name is Aaron Phan, and I'm a software engineer by day, and aspiring artist by night.",
+    "In my spare time, I enjoy listening to EDM, cooking, and DJing under the pseudonym PHVNTM."
+  ],
+  quote: "The best time to start was yesterday, the next best time to start is today."
+};
 
+const SKILLS = [
+  { label:'Languages', items:'Go, Java, JavaScript, Python, C/C++, SQL (Postgres), HTML/CSS, MATLAB' },
+  { label:'Frameworks', items:'PyQT, Flask, JUnit, JavaFX, Langchain' },
+  { label:'Developer Tools', items:'AWS CloudFormation, AWS Lambda, Jira, Jenkins, Claude Code, Docker, Kubernetes, Salesforce, Git, VS Code, PyCharm, IntelliJ, Anaconda, Jupyter Notebook, Supabase, MongoDB' },
+  { label:'Libraries', items:'Pandas, NumPy, Matplotlib, Scikit-learn, TensorFlow, Keras, PyTorch' }
+];
 
+const EDUCATION = [
+  { title:'B.S. Electrical & Computer Engineering', sub:'The University of Texas at Austin',
+    kv:[['Location','Austin, TX'],['GPA','3.2'],['Track', 'Data Science'],['Expected','December 2026']] },
+  { title:'High School Diploma', sub:'Glenda Dawson High School',
+    kv:[['Location','Pearland, TX'],['GPA','3.911'],['Completed','May 2022']] }
+];
 
-				<section class="colorlib-services" data-section="skills">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">What can I do?</span>
-								<h2 class="colorlib-heading">Skills:</h2>
-							</div>
-						</div>
-						<div class="row row-pt-md">
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-1">
-									<span class="icon">
-										<i class="icon-device-laptop"></i>
-									</span>
-									<div class="desc">
-										<h3>Languages</h3>
-										<p>
-											Java, Python, C/C++, SQL, HTML/CSS, Assembly, Verilog
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-2">
-									<span class="icon">
-										<i class="icon-battery-mid"></i>
-									</span>
-									<div class="desc">
-										<h3>Tools</h3>
-										<p>Maven, Git, MATLAB, IntelliJ, CLion, VS Code, Anaconda, Supabase</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-6">
-									<span class="icon">
-										<i class="icon-power-outline"></i>
-									</span>
-									<div class="desc">
-										<h3>Soft Skills</h3>
-										<p>Communication, Teamwork, Problem-Solving, Critical Analysis</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-3">
-									<span class="icon">
-										<i class="icon-phone3"></i>
-									</span>
-									<div class="desc">
-										<h3>Machine Learning</h3>
-										<p>CNNs, RAG, Multi-modal learning, Evolutionary learning</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-4">
-									<span class="icon">
-										<i class="icon-layers2"></i>
-									</span>
-									<div class="desc">
-										<h3>Libraries</h3>
-										<p>PyTorch, Langchain, NumPy, scikit-learn, Beautiful Soup 4, Pandas</p>
-									</div>
-								</div>
-							</div>
+const PROJECTS = [
+  { title:'RecipeCart', sub:'July 2026', stack:['TypeScript','Railway','Docker','CSS'],
+    body:['Built a TypeScript pipeline converting TikTok recipes into Kroger cart items using OCR and Claude.',
+      'Developed a deterministic matching engine ranking grocery products by availability, package fit, and unit price.',
+      'Implemented an OAuth2-secured cart workflow with explicit user approval, encrypted tokens, and automated secret redaction.'] },
+  { title:'A.T.L.A.S', sub:'May 2025 – August 2025', stack:['Python','Flask','HTML/CSS','JavaScript'],
+    body:['Built a Python/Flask web app standardizing post-installation logging, improving team efficiency by 30%.',
+      'Conducted user testing with off-net installation teams to iteratively refine features based on direct feedback.',
+      'Documented technical architecture, reducing developer onboarding time by 12%.'] },
+  { title:'Suspect Genie', sub:'January 2025 – May 2025', stack:['Python','PyQT','TensorFlow','Keras','Scikit-learn'],
+    body:['Designed a neural network ML tool to predict unusable shipping freight by analyzing case dimensions and weight, automating defect detection by 25%.',
+      'Trained ML models using TensorFlow and Keras to classify freight viability, achieving ≥ 50% accuracy on test data.',
+      'Engineered a data pipeline with NumPy, Pandas, and Scikit-learn for data pre-processing/cleaning and feature engineering, improving model performance by 24%.',
+      'Deployed a user-friendly GUI with PyQT for non-technical teams to analyze CSV files for predictive analysis of future problematic SKUs, reducing investigative labor hours by 36%.'] },
+  { title:'MediaDash: Content Recommendation Hub', sub:'Brainrot Hackathon — November 2024', stack:['Python','Langchain','Supabase'],
+    link:{ label:'GitHub', href:'https://github.com/aa-phan' },
+    body:['Developed a Python backend for preprocessing user search queries sent to the IMDb and TMDb APIs.',
+      'Utilized the Langchain API to make AI-customized content recommendations from previous user watch history.',
+      'Applied database management concepts to ensure low-latency exchange between frontend and backend applications.',
+      'Integrated Supabase into the data storage schema for previous user watch history.'] } ,
+  { title:'Full-Stack Library Simulator', sub:'UT Coursework — Spring 2024', stack:['JavaFX','MongoDB'],
+    body:['Developed a full stack library application using JavaFX, enhancing user experience with an intuitive graphical interface.',
+      'Implemented client-server socket communication to ensure real-time data exchange and seamless user interactions.',
+      'Integrated MongoDB for efficient data storage and retrieval, ensuring robust and scalable database management.',
+      'Utilized Scene Builder to design and arrange user interface components, streamlining development and improving usability.'] },
+  { title:'FPGA-Based Stopwatch', sub:'UT Coursework — Fall 2023', stack:['Verilog','FPGA'],
+    body:['Designed and implemented an FPGA-based stopwatch utilizing Verilog digital design techniques.',
+      'Developed and tested the stopwatch functionality on an FPGA board, ensuring accurate timekeeping and reliable performance.',
+      "Applied state machine concepts to manage the stopwatch's operational states, enhancing the overall system efficiency."] },
+  { title:'Smart Mirror', sub:'Personal Project — Summer 2022', stack:['Raspberry Pi','Linux'],
+    body:['Fabricated a mirror frame using plywood and power tools to house a two-way mirror, a Raspberry Pi, and a computer monitor.',
+      'Used Ubuntu Linux to create a custom GUI displaying information such as real-time weather content and traffic data to function as a smart display.'] },
+];
 
-							<div class="col-md-4 text-center animate-box">
-								<div class="services color-5">
-									<span class="icon">
-										<i class="icon-message"></i>
-									</span>
-									<div class="desc">
-										<h3>Languages</h3>
-										<p>English, Vietnamese</p>
-									</div>
-								</div>
-							</div> 
-							
-						
-						</div>
-					</div>
-				</section>
-<!--
-				<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(images/cover_bg_1.jpg);"
-					data-stellar-background-ratio="0.5">
-					<div class="overlay"></div>
-					<div class="colorlib-narrow-content">
-						<div class="row">
-						</div>
-						<div class="row">
-							<div class="col-md-3 text-center animate-box">
-								<span class="colorlib-counter js-counter" data-from="0" data-to="309" data-speed="5000"
-									data-refresh-interval="50"></span>
-								<span class="colorlib-counter-label">Cups of coffee</span>
-							</div>
-							<div class="col-md-3 text-center animate-box">
-								<span class="colorlib-counter js-counter" data-from="0" data-to="5" data-speed="5000"
-									data-refresh-interval="50"></span>
-								<span class="colorlib-counter-label">Projects</span>
-							</div>
-							<div class="col-md-3 text-center animate-box">
-								<span class="colorlib-counter js-counter" data-from="0" data-to="30" data-speed="5000"
-									data-refresh-interval="50"></span>
-								<span class="colorlib-counter-label">Clients</span>
-							</div>
+const EXPERIENCE = [
+  { title:'Software Engineering Intern', sub:'Capital One: June 2026 - Aug 2026',
+    body:['Engineered a real-time event-processing pipeline in Go using Kafka, Amazon SQS, and AWS Lambda to process 100K+ Auto Finance events daily within a production distributed system.',
+      'Built and deployed cloud-native serverless infrastructure with AWS CloudFormation and CloudWatch, ensuring reliability and observability across critical Auto Finance services.',
+      'Developed production backend microservices in Go within an Agile team, leveraging Docker, GitHub, Jenkins, and CI/CD pipelines to deliver scalable cloud applications.'] },
+  { title:'Network Engineer Intern', sub:'Spectrum: June 2025 - Aug 2025',
+    body:['Coordinated installation of 8+ off-net Layer 2 devices per week with ≤ 1 hour turnaround times.',
+      'Developed a Python application to standardize post-installation records, improving team efficiency by 30%.',
+      'Validated Layer 2 circuit designs against customer-defined acceptance criteria before handoff to installation team.'] },
+  { title:'Systems Engineer Intern', sub:'Symbotic: January 2025 - May 2025',
+    body:['Monitored status of automated conveyors, vertical lifts, and robotic palletizers for 8+ production lines, addressing 5+ critical disruptions per week.',
+      'Supported escalation procedures and production-critical problem-solving for 8 key systems, minimizing operational downtime by 12 hours per month on average.',
+      'Developed an app using Python, Tensorflow/Keras, PyQT, and Scikit-learn to analyze and predict defective shipping freight with 76% accuracy, leading to a 12% reduction in defective freight.'] },
+  { title:'Software Engineer Intern', sub:'OdderTech IT: June 2023 - Aug 2023',
+    body:['Developed a Python application to read Wi-Fi camera feeds.',
+      'Interacted with Wi-Fi camera documentation to develop cross-platform software interfaces.',
+      'Utilized Linux to integrate a network-attached storage rack into business infrastructure.'] },
+  { title:'ITS Student Consultant I', sub:'The University of Texas at Austin: Aug 2022 – Oct 2023',
+    body:['Assessed client needs to provide solutions and resolve technical problems.',
+      'Utilized new systems and software to provide training and support to clients.',
+      'Possessed a strong background in IT, excellent communication, problem-solving skills, and the ability to work independently and as part of a team.'] },
+  
+];
 
-						</div>
-					</div>
-				</div>
-			-->
-			<!--
-				<section class="colorlib-skills" data-section="skills">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Interests</span>
-								<h2 class="colorlib-heading animate-box">My Skills</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-								<p>Below is a collection of various programming languages and skills I've utilized throughout
-									my career.</p>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="progress-wrap">
-									<h3>C/C++</h3>
-									<div class="progress">
-										<div class="progress-bar color-1" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-											aria-valuemax="100" style="width:75%">
-											<span>75%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="progress-wrap">
-									<h3>PCB Design (Eagle/KiCad)</h3>
-									<div class="progress">
-										<div class="progress-bar color-2" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-											aria-valuemax="100" style="width:60%">
-											<span>60%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="progress-wrap">
-									<h3>HTML5</h3>
-									<div class="progress">
-										<div class="progress-bar color-3" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100" style="width:85%">
-											<span>85%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="progress-wrap">
-									<h3>CSS3</h3>
-									<div class="progress">
-										<div class="progress-bar color-4" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-											aria-valuemax="100" style="width:90%">
-											<span>90%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="progress-wrap">
-									<h3>Swift</h3>
-									<div class="progress">
-										<div class="progress-bar color-5" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-											aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="progress-wrap">
-									<h3>SEO</h3>
-									<div class="progress">
-										<div class="progress-bar color-6" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100" style="width:80%">
-											<span>80%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
--->
-				<section class="colorlib-education" data-section="education">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Education</span>
-								<h2 class="colorlib-heading animate-box">Education</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-								<div class="fancy-collapse-panel">
-									<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingOne">
-												<h4 class="panel-title">
-													<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-														aria-controls="collapseOne">Bachelor's of Science in Electrical and Computer Engineering
-													</a>
-												</h4>
-											</div>
-											<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-												aria-labelledby="headingOne">
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-md-6">
-															<p>The University of Texas at Austin <br><i>Austin, Texas</i><br> <i>GPA: 3.1</i></p>
-														</div>
-														<div class="col-md-6">
-															<p>Expected Graduation Date: <i>May 2026</i></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+const CONTACT = [
+  { title:'Email', sub:'aaron.phan240@gmail.com', href:'mailto:aaron.phan240@gmail.com', ext:false },
+  { title:'GitHub', sub:'github.com/aa-phan', href:'https://github.com/aa-phan', ext:true },
+  { title:'LinkedIn', sub:'linkedin.com/in/aa-phan', href:'https://www.linkedin.com/in/aa-phan/', ext:true },
+  { title:'DJ Instagram', sub:'instagram.com/phvntm_', href:'https://www.instagram.com/phvntm_', ext:true },
 
+];
 
-										<!-- <div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingTwo">
-												<h4 class="panel-title">
-													<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-														aria-expanded="false" aria-controls="collapseTwo">Minor in Business Administration
-													</a>
-												</h4>
-											</div>
-											<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-												aria-labelledby="headingTwo">
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-md-6">
-															<p>The University of Texas at Austin <br><i>Austin, Texas</i><br> <i>GPA: 3.33</i></p>
-														</div>
-														<div class="col-md-6">
-															<p>Expected Graduation Date: <i>May 2026</i></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div> -->
+// ===== escape helper =====
+function escText(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
 
+// ===== frame builders =====
+function activateContact(entry){
+  if (entry.ext){
+    window.open(entry.href, '_blank', 'noopener');
+  } else {
+    location.href = entry.href;
+  }
+}
 
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingThree">
-												<h4 class="panel-title">
-													<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-														aria-expanded="false" aria-controls="collapseThree">CompTIA Cybersecurity+ Certification
-													</a>
-												</h4>
-											</div>
-											<div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-												aria-labelledby="headingThree">
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-md-6">
-															<p><i>Completed in September 2023</i></p>
-														</div>
+function makeEntryDetailFrame(sectionTitle, entry){
+  return { type:'body', title: entry.title, render: (container) => {
+    if (entry.sub){
+      const sub = document.createElement('p');
+      sub.className = 'detail-sub';
+      sub.textContent = entry.sub;
+      container.appendChild(sub);
+    }
+    if (entry.body){
+      entry.body.forEach(line => {
+        const p = document.createElement('p');
+        p.textContent = line;
+        container.appendChild(p);
+      });
+    }
+    if (entry.kv){
+      const kv = document.createElement('div');
+      kv.className = 'kv';
+      entry.kv.forEach(pair => {
+        const row = document.createElement('div');
+        row.className = 'kv-row';
+        const k = document.createElement('span');
+        k.className = 'kv-key';
+        k.textContent = pair[0];
+        const v = document.createElement('span');
+        v.textContent = pair[1];
+        row.appendChild(k); row.appendChild(v);
+        kv.appendChild(row);
+      });
+      container.appendChild(kv);
+    }
+    if (entry.stack){
+      const sl = document.createElement('div');
+      sl.className = 'stackline';
+      sl.textContent = 'STACK: ' + entry.stack.join(' · ');
+      container.appendChild(sl);
+    }
+    if (entry.link){
+      const a = document.createElement('a');
+      a.href = entry.link.href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'detail-link';
+      a.textContent = entry.link.label + ' ↗';
+      container.appendChild(a);
+    }
+  }};
+}
 
-													</div>
-												</div>
-											</div>
-										</div>
+function makeSectionListFrame(title, items){
+  return { type:'list', title:title, selectedIndex:0,
+    items: items.map(entry => ({
+      label: entry.title,
+      sub: entry.sub,
+      chevron: true,
+      select: () => makeEntryDetailFrame(title, entry)
+    }))
+  };
+}
 
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingFive">
-												<h4 class="panel-title">
-													<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"
-														aria-expanded="false" aria-controls="collapseFive">Stanford CS221: Artificial Intelligence
-													</a>
-												</h4>
-											</div>
-											<div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-												aria-labelledby="headingFive">
-												<div class="panel-body">
-													<p><i>In Progress: November 2024</i></p>
-													<p>Currently self-teaching artificial intelligence concepts and theory with Stanford's CS221: Artificial Intelligence course, posted publicly on Youtube via Stanford Online.</p>
-												</div>
-											</div>
-										</div>
+function makeContactFrame(){
+  return { type:'list', title:'Contact Me', selectedIndex:0,
+    items: CONTACT.map(entry => ({
+      label: entry.title,
+      sub: entry.sub,
+      chevron: false,
+      select: () => { activateContact(entry); return null; }
+    }))
+  };
+}
 
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingFour">
-												<h4 class="panel-title">
-													<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
-														aria-expanded="false" aria-controls="collapseFour">High School Diploma
-													</a>
-												</h4>
-											</div>
-											<div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-												aria-labelledby="headingFour">
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-md-6">
-															<p>Glenda Dawson High School <br> <i>Pearland, Texas</i></p><br> <i>GPA: 3.911</i>
-														</div>
-														<div class="col-md-6">
-															<p><i>Completed in May 2022</i></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+function makeAboutFrame(){
+  return { type:'body', title:'About Me', render: (container) => {
+    ABOUT.bio.forEach(p => {
+      const el = document.createElement('p');
+      el.textContent = p;
+      container.appendChild(el);
+    });
+    const bq = document.createElement('blockquote');
+    bq.textContent = ABOUT.quote;
+    container.appendChild(bq);
+  }};
+}
 
-				<section class="colorlib-experience" data-section="experience">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Projects, Internships, and Jobs</span>
-								<h2 class="colorlib-heading animate-box">Experience</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="timeline-centered">
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
+function makeSkillsFrame(){
+  return { type:'body', title:'Skills', render: (container) => {
+    SKILLS.forEach((cat, i) => {
+      const sk = document.createElement('div');
+      sk.className = 'skillsline' + (i === 0 ? ' skillsline-first' : '');
+      const b = document.createElement('b');
+      b.textContent = cat.label.toUpperCase();
+      sk.appendChild(b);
+      sk.appendChild(document.createTextNode(cat.items));
+      container.appendChild(sk);
+    });
+  }};
+}
 
-											<div class="timeline-icon color-1">
-												<i class="icon-pen2"></i>
-											</div>
+function makeHomeFrame(){
+  return { type:'list', title:'Aaron Phan', selectedIndex:0,
+    items:[
+      { label:'About Me', sub:null, chevron:true, select: () => makeAboutFrame() },
+      { label:'Skills', sub:null, chevron:true, select: () => makeSkillsFrame() },
+      { label:'Education', sub:null, chevron:true, select: () => makeSectionListFrame('Education', EDUCATION) },
+      { label:'Experience', sub:null, chevron:true, select: () => makeSectionListFrame('Experience', EXPERIENCE) },
+      { label:'Projects', sub:null, chevron:true, select: () => makeSectionListFrame('Projects', PROJECTS) },
+      { label:'Contact Me', sub:null, chevron:true, select: () => makeContactFrame() }
+    ]
+  };
+}
 
-											<div class="timeline-label">
-												<h2><a href="#">Smart Mirror</a> <span>Summer 2022</span></h2>
-												<p>
-												<ul>
-													<li>Fabricated a mirror frame using plywood and power tools to house a two-way mirror, a Raspberry Pi, and a
-														computer monitor.</li>
-													<li>Used Ubuntu Linux to create a custom GUI displaying information such as real-time weather content and traffic data to function as a smart display.</li>
-												</ul>
-												</p>
-											</div>
-										</div>
-									</article>
+// ===== nav stack =====
+const navStack = [ makeHomeFrame() ];
 
+function currentFrame(){ return navStack[navStack.length - 1]; }
 
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-2">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">The University of Texas at Austin</a> <span>August 2022 - October 2023</span></h2>
-												<p><b>ITS Student Consultant I</b>
-												<ul>
-													<li>
-														Assessed client needs to provide solutions and resolve technical problems.
-													</li>
-													<li>
-														Utilized new systems and software to provide training and support to
-														clients.
-													</li>
-													<li>
-														Possessed a strong background in IT, excellent communication, problem-solving skills, and
-														the ability to work independently and as part of a team.
-													</li>
-												</ul>
-												</p>
-											</div>
-										</div>
-									</article>
+function pushFrame(frame){
+  if (frame){
+    navStack.push(frame);
+    render();
+  }
+}
 
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-3">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">OdderTech IT Services</a> <span>Summer 2023</span></h2>
-												<p><b>Software Engineering Intern</b>
-												<ul>
-													<li>
-														Developed Python application to read Wi-Fi camera feeds.
-													</li>
-													<li>
-														Interacted with Wi-Fi camera documentation to develop cross-platform software interfaces.
-													</li>
-													<li>
-														Utilized Linux to integrate a network-attached storage rack into business infrastructure.
-													</li>
-												</ul>
-												</p>
-											</div>
-										</div>
-									</article>
+function popFrame(){
+  if (navStack.length > 1){
+    Sfx.click();
+    navStack.pop();
+    render();
+  }
+}
 
+function selectCurrent(){
+  const frame = currentFrame();
+  if (frame.type !== 'list') return;
+  const item = frame.items[frame.selectedIndex];
+  if (!item) return;
+  Sfx.click();
+  const next = item.select();
+  if (next) pushFrame(next);
+}
 
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-4">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">Oddertech IT Services</a> <span>Summer 2023</span></h2>
-												<p><b>Anime Matsuri 2023 Video Game</b>
-												<ul>
-													<li>
-														Developed a slot-machine style video game for use at the company's booth at Anime Matsuri
-														Convention 2023 using Python and Pygame library.
-													</li>
-													<li>
-														Designed graphics, animations, and user interface components for an engaging gaming
-														experience.
-													</li>
-													<li>
-														Prioritized user-friendly interface and intuitive controls for optimal user experience.
-													</li>
-													<li>
-														Packaged game for deployment on multiple platforms using Pygame's distribution tools.
-													</li>
-												</ul>
-												</p>
-											</div>
-										</div>
-									</article>
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-5">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">The University of Texas at Austin</a> <span>Fall 2023</span></h2>
-												<p><b>Language Interpreter C++ Program </b></p>
-												<ul>
-													<li>
-														Developed a C++ program to parse commands from custom .blip files.
-													</li>
-													<li>
-														Created classes to efficiently handle command interpretation, demonstrating object-oriented programming.
-													</li>
-													<li>
-														Implemented key concepts such as recursion, linked list traversal, and binary tree traversal to enhance program functionality.
-													</li>
-													<li>
-														Utilized hash mapping techniques to ensure rapid data retrieval and efficient command execution.
-													</li>
-												</ul>
-											</div>
-										</div>
-										</article>
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-1">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">The University of Texas at Austin</a> <span>Fall 2023</span></h2>
-												<p><b>FPGA-Based Stopwatch </b></p>
-												<ul>
-													<li>
-														Designed and implemented an FPGA-based stopwatch utilizing Verilog digital design techniques.
-													</li>
-													<li>
-														Developed and tested the stopwatch functionality on an FPGA board, ensuring accurate timekeeping and reliable performance.
-													</li>
-													<li>
-														Applied state machine concepts to manage the stopwatch's operational states, enhancing the overall system efficiency.
-													</li>
-												</ul>
-											</div>
-										</div>
-										</article>
-										<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-2">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">The University of Texas at Austin</a> <span>Spring 2024</span></h2>
-												<p><b>Full-stack Library App </b></p>
-												<ul>
-													<li>
-														Developed a full stack library application using JavaFX, enhancing user experience with an intuitive graphical interface.
-													</li>
-													<li>
-														Implemented client-server socket communication to ensure real-time data exchange and seamless user interactions.													</li>
-													<li>
-														Integrated MongoDB for efficient data storage and retrieval, ensuring robust and scalable database management.
-													</li>
-													<li>
-														Applied full stack development concepts including backend logic and frontend design to deliver a cohesive application.
-													</li>
-													<li>
-														Utilized Scene Builder to design and arrange user interface components, streamlining the development process and improving
-														application usability.
-													</li>
-												</ul>
-											</div>
-										</div>
-									</article>
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-3">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">Brainrot Hackathon</a> <span>November 2024</span></h2>
-												<p><b>MediaDash: Content Recommendation Hub</b></p>
-												<ul>
-													<li>
-														Developed Python backend for preprocessing user search queries sent to IMDb, TMDb APIs.
-													</li>
-													<li>
-														Utilized Langchain API to make AI-customized content recommendations from previous user watch history.
-													</li>
-													<li>
-														Applied database management concepts to ensure low-latency exchange between frontend and backend applications.
-													</li>
-													<li>
-														Integrated Supabase into data storage schema for previous user watch history.
-													</li>
-													
-												</ul>
-											</div>
-										</div>
-									</article>
-									
+// ===== DOM refs =====
+const screenTitleEl = document.getElementById('screenTitle');
+const paneEl = document.getElementById('pane');
+const wheelOuter = document.getElementById('wheelOuter');
+const wheelEl = document.getElementById('wheel');
+const menuBtn = document.getElementById('menuBtn');
+const selectBtn = document.getElementById('selectBtn');
+const backBtn = document.getElementById('backBtn');
 
-									<article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-none">
-											</div>
-										</div>
-									</article>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-<!--
-				<section class="colorlib-work" data-section="work">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">My Work</span>
-								<h2 class="colorlib-heading animate-box">Recent Work</h2>
-							</div>
-						</div>
-						<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-							<div class="col-md-12">
-								<p class="work-menu"><span><a href="#" class="active">Graphic Design</a></span> <span><a href="#">Web
-											Design</a></span> <span><a href="#">Software</a></span> <span><a href="#">Apps</a></span></p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="project" style="background-image: url(images/img-1.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 01</a></h3>
-											<span>Website</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="project" style="background-image: url(images/img-2.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 02</a></h3>
-											<span>Animation</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-								<div class="project" style="background-image: url(images/img-3.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 03</a></h3>
-											<span>Illustration</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-								<div class="project" style="background-image: url(images/img-4.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 04</a></h3>
-											<span>Application</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="project" style="background-image: url(images/img-5.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 05</a></h3>
-											<span>Graphic, Logo</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="project" style="background-image: url(images/img-6.jpg);">
-									<div class="desc">
-										<div class="con">
-											<h3><a href="work.html">Work 06</a></h3>
-											<span>Web Design</span>
-											<p class="icon">
-												<span><a href="#"><i class="icon-share3"></i></a></span>
-												<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-												<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 animate-box">
-								<p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i class="icon-reload"></i></a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</section>
-			-->
-<!--
-				<section class="colorlib-blog" data-section="blog">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Read</span>
-								<h2 class="colorlib-heading">Recent Blog</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="images/blog-1.jpg" class="img-responsive"
-											alt="HTML5 Bootstrap Template by colorlib.com"></a>
-									<div class="desc">
-										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i
-													class="icon-bubble3"></i> 4</small></span>
-										<h3><a href="blog.html">Renovating National Gallery</a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-											ocean.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInRight">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="images/blog-2.jpg" class="img-responsive"
-											alt="HTML5 Bootstrap Template by colorlib.com"></a>
-									<div class="desc">
-										<span><small>April 14, 2018 </small> | <small> Web Design </small> | <small> <i
-													class="icon-bubble3"></i> 4</small></span>
-										<h3><a href="blog.html">Wordpress for a Beginner</a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-											ocean.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-								<div class="blog-entry">
-									<a href="blog.html" class="blog-img"><img src="images/blog-3.jpg" class="img-responsive"
-											alt="HTML5 Bootstrap Template by colorlib.com"></a>
-									<div class="desc">
-										<span><small>April 14, 2018 </small> | <small> Inspiration </small> | <small> <i
-													class="icon-bubble3"></i> 4</small></span>
-										<h3><a href="blog.html">Make website from scratch</a></h3>
-										<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-											ocean.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 animate-box">
-								<p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i class="icon-reload"></i></a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</section>
-			-->
-				<section class="colorlib-contact" data-section="contact">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Get in Touch!</span>
-								<h2 class="colorlib-heading">Contact Me</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-5">
-								<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-									<div class="colorlib-icon">
-										<i class="icon-mail"></i>
-									</div>
-									<div class="colorlib-text">
-										<p><a href="mailto:atp2323@utexas.edu">Email me!</a></p>
-									</div>
-								</div>
+function render(){
+  const frame = currentFrame();
+  screenTitleEl.textContent = frame.title;
+  paneEl.scrollTop = 0;
+  paneEl.innerHTML = '';
 
-								<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-									<div class="colorlib-icon">
-										<i class="icon-github"></i>
-									</div>
-									<div class="colorlib-text">
-										<p><a href="https://github.com/aa-phan" target="_blank">My Github!</a></p>
-									</div>
-								</div>
+  if (frame.type === 'list'){
+    const ul = document.createElement('ul');
+    ul.className = 'ilist';
+    ul.setAttribute('role', 'listbox');
+    frame.items.forEach((item, i) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'irow';
+      btn.setAttribute('role', 'option');
+      btn.setAttribute('aria-selected', i === frame.selectedIndex ? 'true' : 'false');
+      let html = '<span class="irow-main"><span class="irow-label">' + escText(item.label) + '</span>';
+      if (item.sub) html += '<span class="irow-sub">' + escText(item.sub) + '</span>';
+      html += '</span>';
+      html += '<span class="irow-chevron">' + (item.chevron ? '›' : '') + '</span>';
+      btn.innerHTML = html;
+      btn.addEventListener('click', () => {
+        frame.selectedIndex = i;
+        selectCurrent();
+      });
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    paneEl.appendChild(ul);
+    const selectedBtn = ul.children[frame.selectedIndex] && ul.children[frame.selectedIndex].firstElementChild;
+    if (selectedBtn) selectedBtn.scrollIntoView({ block:'nearest' });
+  } else if (frame.type === 'body'){
+    const wrap = document.createElement('div');
+    wrap.className = 'body';
+    frame.render(wrap);
+    paneEl.appendChild(wrap);
+  }
 
-								
-							</div>
+  menuBtn.disabled = navStack.length <= 1;
+  menuBtn.style.opacity = navStack.length <= 1 ? '0.4' : '1';
+  backBtn.disabled = navStack.length <= 1;
+}
 
-							<div class="col-md-7 col-md-push-1">
-								<div class="row">
-									<div class="col-md-5">
-										<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInRight">
-											<div class="colorlib-icon">
-												<i class="icon-social-linkedin"></i>
-											</div>
-											<div class="colorlib-text">
-												<p><a href="https://www.linkedin.com/in/aa-phan/" target="_blank">My LinkedIn!</a></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--
+menuBtn.addEventListener('click', popFrame);
+selectBtn.addEventListener('click', selectCurrent);
+backBtn.addEventListener('click', popFrame);
 
-							<div class="col-md-7 col-md-push-1">
-								<div class="row">
-									<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
-										<form action="">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Name">
-											</div>
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Email">
-											</div>
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Subject">
-											</div>
-											<div class="form-group">
-												<textarea name="" id="message" cols="30" rows="7" class="form-control"
-													placeholder="Message"></textarea>
-											</div>
-											<div class="form-group">
-												<input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
-											</div>
-										</form>
-									</div>
+// ===== keyboard =====
+document.addEventListener('keydown', (e) => {
+  const ae = document.activeElement;
+  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) return;
 
-								</div>
-							</div>-->
-					
+  const frame = currentFrame();
 
-						</div>
-					</div>
-				</section>
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+    e.preventDefault();
+    const dir = e.key === 'ArrowDown' ? 1 : -1;
+    if (frame.type === 'list'){
+      const prev = frame.selectedIndex;
+      frame.selectedIndex = Math.max(0, Math.min(frame.items.length - 1, frame.selectedIndex + dir));
+      if (frame.selectedIndex !== prev) Sfx.tick();
+      render();
+    } else if (frame.type === 'body'){
+      paneEl.scrollTop += dir * 40;
+      Sfx.tick();
+    }
+    return;
+  }
 
-			</div><!-- end:colorlib-main -->
-		</div><!-- end:container-wrap -->
-	</div><!-- end:colorlib-page -->
+  if (e.key === 'Enter'){
+    e.preventDefault();
+    selectCurrent();
+    return;
+  }
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
-	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
+  if (e.key === 'Escape'){
+    e.preventDefault();
+    popFrame();
+    return;
+  }
+});
 
+// ===== scroll wheel drag =====
+let dragging = false;
+let dragStartAngle = 0;
+let accumRot = 0;
+let cssRot = 0;
 
-	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
+function wheelCenter(){
+  const r = wheelOuter.getBoundingClientRect();
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+}
 
+function angleAt(x, y){
+  const c = wheelCenter();
+  return Math.atan2(y - c.y, x - c.x);
+}
+
+wheelOuter.addEventListener('pointerdown', (e) => {
+  dragging = true;
+  wheelOuter.setPointerCapture(e.pointerId);
+  dragStartAngle = angleAt(e.clientX, e.clientY);
+});
+
+wheelOuter.addEventListener('pointermove', (e) => {
+  if (!dragging) return;
+
+  const angle = angleAt(e.clientX, e.clientY);
+  let d = angle - dragStartAngle;
+  if (d > Math.PI) d -= 2 * Math.PI;
+  if (d < -Math.PI) d += 2 * Math.PI;
+  dragStartAngle = angle;
+
+  cssRot += d * (180 / Math.PI);
+  wheelEl.style.setProperty('--wheel-rot', cssRot + 'deg');
+
+  const frame = currentFrame();
+  accumRot += d * (180 / Math.PI);
+  const THRESH = 34;
+
+  if (frame.type === 'list'){
+    if (accumRot >= THRESH){
+      accumRot = 0;
+      const prev = frame.selectedIndex;
+      frame.selectedIndex = Math.min(frame.items.length - 1, frame.selectedIndex + 1);
+      if (frame.selectedIndex !== prev) Sfx.tick();
+      render();
+    } else if (accumRot <= -THRESH){
+      accumRot = 0;
+      const prev = frame.selectedIndex;
+      frame.selectedIndex = Math.max(0, frame.selectedIndex - 1);
+      if (frame.selectedIndex !== prev) Sfx.tick();
+      render();
+    }
+  } else if (frame.type === 'body'){
+    if (Math.abs(accumRot) >= THRESH){
+      const steps = Math.trunc(accumRot / THRESH);
+      accumRot -= steps * THRESH;
+      paneEl.scrollTop += steps * 46;
+      Sfx.tick();
+    }
+  }
+});
+
+function endDrag(e){
+  if (!dragging) return;
+  dragging = false;
+  accumRot = 0;
+  try{ wheelOuter.releasePointerCapture(e.pointerId); }catch(err){}
+}
+wheelOuter.addEventListener('pointerup', endDrag);
+wheelOuter.addEventListener('pointercancel', endDrag);
+
+// ===== init =====
+render();
+
+})();
+</script>
 </body>
-
 </html>
