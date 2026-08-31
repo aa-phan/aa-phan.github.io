@@ -175,8 +175,24 @@ a{ color: inherit; }
 
 /* ===== body/detail content ===== */
 .body{
+  position: relative;
   padding: calc(var(--u)*2) calc(var(--u)*2.2) calc(var(--u)*3);
   color: var(--ink);
+}
+.detail-sub-row{
+  position: relative;
+  margin: 0 0 calc(var(--u)*1.6);
+}
+.entry-logo{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  height: calc(var(--u)*3.4);
+  width: auto;
+  max-width: calc(var(--u)*7);
+  object-fit: contain;
+  filter: drop-shadow(1px 1px 0 rgba(22,24,28,.18));
 }
 .about-photo{
   display:block;
@@ -202,7 +218,10 @@ a{ color: inherit; }
 .body .detail-sub{
   font-size: calc(var(--u)*2);
   color: var(--ink-dim);
-  margin: 0 0 calc(var(--u)*1.6);
+  margin: 0;
+}
+.detail-sub-row.has-logo .detail-sub{
+  padding-right: calc(var(--u)*7.6);
 }
 .kv{ margin: 0 0 calc(var(--u)*1.6); }
 .kv-row{ display:flex; gap: calc(var(--u)*1); font-size: calc(var(--u)*2.2); margin-bottom: calc(var(--u)*0.4); }
@@ -447,10 +466,10 @@ const ABOUT = {
 };
 
 const SKILLS = [
-  { label:'Languages', items:'Go, Java, JavaScript, Python, C/C++, SQL (Postgres), HTML/CSS, MATLAB' },
-  { label:'Frameworks', items:'PyQT, Flask, JUnit, JavaFX, Langchain' },
-  { label:'Developer Tools', items:'AWS CloudFormation, AWS Lambda, Jira, Jenkins, Claude Code, Docker, Kubernetes, Salesforce, Git, VS Code, PyCharm, IntelliJ, Anaconda, Jupyter Notebook, Supabase, MongoDB' },
-  { label:'Libraries', items:'Pandas, NumPy, Matplotlib, Scikit-learn, TensorFlow, Keras, PyTorch' }
+  { label:'Languages', items:'C/C++, Go, HTML/CSS, Java, JavaScript, MATLAB, Python, SQL (Postgres)' },
+  { label:'Frameworks', items:'Flask, JavaFX, JUnit, Langchain, PyQT' },
+  { label:'Developer Tools', items:'Anaconda, AWS CloudFormation, AWS Lambda, Claude Code, Docker, Git, IntelliJ, Jenkins, Jira, Jupyter Notebook, Kubernetes, MongoDB, PyCharm, Salesforce, Supabase, VS Code' },
+  { label:'Libraries', items:'Keras, Matplotlib, NumPy, Pandas, PyTorch, Scikit-learn, TensorFlow' }
 ];
 
 const EDUCATION = [
@@ -475,7 +494,6 @@ const PROJECTS = [
       'Engineered a data pipeline with NumPy, Pandas, and Scikit-learn for data pre-processing/cleaning and feature engineering, improving model performance by 24%.',
       'Deployed a user-friendly GUI with PyQT for non-technical teams to analyze CSV files for predictive analysis of future problematic SKUs, reducing investigative labor hours by 36%.'] },
   { title:'MediaDash: Content Recommendation Hub', sub:'Brainrot Hackathon: November 2024', stack:['Python','Langchain','Supabase'],
-    link:{ label:'GitHub', href:'https://github.com/aa-phan' },
     body:['Developed a Python backend for preprocessing user search queries sent to the IMDb and TMDb APIs.',
       'Utilized the Langchain API to make AI-customized content recommendations from previous user watch history.',
       'Applied database management concepts to ensure low-latency exchange between frontend and backend applications.',
@@ -495,15 +513,15 @@ const PROJECTS = [
 ];
 
 const EXPERIENCE = [
-  { title:'Software Engineering Intern', sub:'Capital One: June 2026 - Aug 2026',
+  { title:'Software Engineering Intern', sub:'Capital One: June 2026 - Aug 2026', logo:'images/logos/capitalone.png',
     body:['Engineered a real-time event-processing pipeline in Go using Kafka, Amazon SQS, and AWS Lambda to process 100K+ Auto Finance events daily within a production distributed system.',
       'Built and deployed cloud-native serverless infrastructure with AWS CloudFormation and CloudWatch, ensuring reliability and observability across critical Auto Finance services.',
       'Developed production backend microservices in Go within an Agile team, leveraging Docker, GitHub, Jenkins, and CI/CD pipelines to deliver scalable cloud applications.'] },
-  { title:'Network Engineer Intern', sub:'Spectrum: June 2025 - Aug 2025',
+  { title:'Network Engineer Intern', sub:'Spectrum: June 2025 - Aug 2025', logo:'images/logos/spectrum.png',
     body:['Coordinated installation of 8+ off-net Layer 2 devices per week with ≤ 1 hour turnaround times.',
       'Developed a Python application to standardize post-installation records, improving team efficiency by 30%.',
       'Validated Layer 2 circuit designs against customer-defined acceptance criteria before handoff to installation team.'] },
-  { title:'Systems Engineer Intern', sub:'Symbotic: January 2025 - May 2025',
+  { title:'Systems Engineer Intern', sub:'Symbotic: January 2025 - May 2025', logo:'images/logos/symbotic.png',
     body:['Monitored status of automated conveyors, vertical lifts, and robotic palletizers for 8+ production lines, addressing 5+ critical disruptions per week.',
       'Supported escalation procedures and production-critical problem-solving for 8 key systems, minimizing operational downtime by 12 hours per month on average.',
       'Developed an app using Python, Tensorflow/Keras, PyQT, and Scikit-learn to analyze and predict defective shipping freight with 76% accuracy, leading to a 12% reduction in defective freight.'] },
@@ -544,11 +562,24 @@ function activateContact(entry){
 
 function makeEntryDetailFrame(sectionTitle, entry){
   return { type:'body', title: entry.title, render: (container) => {
-    if (entry.sub){
-      const sub = document.createElement('p');
-      sub.className = 'detail-sub';
-      sub.textContent = entry.sub;
-      container.appendChild(sub);
+    if (entry.sub || entry.logo){
+      const subRow = document.createElement('div');
+      subRow.className = 'detail-sub-row';
+      if (entry.sub){
+        const sub = document.createElement('p');
+        sub.className = 'detail-sub';
+        sub.textContent = entry.sub;
+        subRow.appendChild(sub);
+      }
+      if (entry.logo){
+        subRow.classList.add('has-logo');
+        const logo = document.createElement('img');
+        logo.className = 'entry-logo';
+        logo.src = entry.logo;
+        logo.alt = '';
+        subRow.appendChild(logo);
+      }
+      container.appendChild(subRow);
     }
     if (entry.body){
       entry.body.forEach(line => {
